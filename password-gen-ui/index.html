@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neon Password Generator</title>
+  <meta name="description" content="Sleek, futuristic strong password generator with neon glassmorphism UI and real-time strength meter." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg fx-grid"></div>
+  <div class="bg fx-glow"></div>
+
+  <main class="container">
+    <header class="header">
+      <h1 class="app-title">Cloud<span>Key</span></h1>
+      <p class="subtitle">Futuristic, strong password generator</p>
+    </header>
+
+    <section class="panel pwd-panel" aria-labelledby="password-display-label">
+      <div class="pwd-row">
+        <label id="password-display-label" class="sr-only" for="passwordOutput">Generated password</label>
+        <input id="passwordOutput" class="pwd-output" type="text" inputmode="none" readonly aria-live="polite" />
+        <button id="copyBtn" class="btn btn-icon" aria-label="Copy password" title="Copy">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/>
+          </svg>
+          <span class="tooltip" role="status" aria-live="polite">Copied</span>
+        </button>
+        <button id="regenBtn" class="btn btn-primary" aria-label="Generate new password">Generate</button>
+      </div>
+      <div class="strength">
+        <div class="strength-label">Strength</div>
+        <div class="strength-bar" aria-hidden="true">
+          <div class="strength-fill"></div>
+          <div class="strength-shine"></div>
+        </div>
+        <div class="strength-score" aria-live="polite" aria-atomic="true">0%</div>
+      </div>
+    </section>
+
+    <section class="panel controls" aria-labelledby="controls-heading">
+      <h2 id="controls-heading" class="sr-only">Password options</h2>
+
+      <div class="control-row">
+        <label for="lengthRange" class="control-label">Length</label>
+        <div class="slider-wrap">
+          <input id="lengthRange" type="range" min="4" max="64" value="16" step="1" />
+          <div class="slider-value" id="lengthValue">16</div>
+        </div>
+      </div>
+
+      <div class="toggles">
+        <label class="toggle">
+          <input id="uppercase" type="checkbox" checked />
+          <span class="track"></span>
+          <span class="label">Uppercase A–Z</span>
+        </label>
+        <label class="toggle">
+          <input id="numbers" type="checkbox" checked />
+          <span class="track"></span>
+          <span class="label">Numbers 0–9</span>
+        </label>
+        <label class="toggle">
+          <input id="symbols" type="checkbox" checked />
+          <span class="track"></span>
+          <span class="label">Symbols !@#$</span>
+        </label>
+      </div>
+
+      <div class="note">Lowercase letters are always included for readability and strength.</div>
+    </section>
+
+    <footer class="footer">
+      <small>Tip: Use different passwords per site and store them in a manager. This generator uses secure randomness when available.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
